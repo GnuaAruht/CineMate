@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">CineMate</string>
+    <string name="intro_text">Book now and enjoy the show!</string>
+    <string name="intro_description">Reserve your seats at your favorite cinemas in just a few taps. Pick the best spot for a perfect movie-watching experience.</string>
+    <string name="get_started">Get Started</string>
+    <string name="now_in_cinemas">Now in Cinemas</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="overview">Overview</string>
+    <string name="trailers">Trailers</string>
+    <string name="view_all">View all</string>
+    <string name="intro_background">Intro background</string>
 </resources>
