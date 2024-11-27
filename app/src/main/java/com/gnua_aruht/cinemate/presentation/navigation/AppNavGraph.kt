@@ -29,7 +29,9 @@ fun AppNavGraph(
             onGetStarted = navController::navigateToHome
         )
 
-        homeRoute()
+        homeRoute(
+            widthSizeClass = windowSizeClass.widthSizeClass,
+        )
 
     }
 }
