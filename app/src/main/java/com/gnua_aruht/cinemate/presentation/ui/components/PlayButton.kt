@@ -1,5 +1,6 @@
 
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material3.Icon
@@ -14,7 +15,8 @@ fun PlayButton(modifier: Modifier = Modifier) {
 
     Surface(
         modifier = modifier,
-        color = Color.Transparent
+        color = Color.White.copy(alpha = 0.6f),
+        shape = CircleShape
     ) {
         Icon(
             Icons.Rounded.PlayArrow,

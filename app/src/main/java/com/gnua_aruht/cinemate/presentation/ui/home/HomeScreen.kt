@@ -36,7 +36,7 @@ fun HomeScreen(
             }
         }
     }
-    val movieWidth = if (widthSizeClass == WindowWidthSizeClass.Expanded) 180.dp else 128.dp
+    val movieWidth = if (widthSizeClass == WindowWidthSizeClass.Expanded) 180.dp else 120.dp
 
     Scaffold(
         topBar = {

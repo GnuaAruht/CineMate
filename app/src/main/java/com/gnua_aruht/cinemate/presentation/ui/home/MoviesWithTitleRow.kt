@@ -10,9 +10,13 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Star
+import androidx.compose.material.icons.rounded.StarOutline
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -26,6 +30,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import com.gnua_aruht.cinemate.R
+import com.smarttoolfactory.ratingbar.RatingBar
+import com.smarttoolfactory.ratingbar.model.GestureStrategy
+import com.smarttoolfactory.ratingbar.model.RateChangeStrategy
 
 
 @Composable
@@ -114,7 +121,22 @@ fun MovieCard(modifier: Modifier = Modifier) {
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-        // todo replace with rating bar
-        Box(modifier = Modifier.fillMaxWidth().height(18.dp).background(Color.Yellow))
+        RatingBar(
+            modifier = Modifier
+                .heightIn(min = 24.dp, max = 32.dp)
+                .fillMaxWidth(),
+            imageVectorFilled = Icons.Rounded.Star,
+            imageVectorEmpty = Icons.Rounded.StarOutline,
+            rateChangeStrategy = RateChangeStrategy.InstantChange,
+            gestureStrategy = GestureStrategy.None,
+            tintFilled = MaterialTheme.colorScheme.primary,
+            tintEmpty = MaterialTheme.colorScheme.primary,
+            itemSize = Dp.Infinity,
+            itemCount = 5,
+            space = 4.dp,
+            rating = 3.4f,
+            allowZeroRating = false,
+            onRatingChange = {}
+        )
     }
 }
