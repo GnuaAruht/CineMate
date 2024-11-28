@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material.icons.rounded.StarOutline
@@ -23,13 +24,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.gnua_aruht.cinemate.R
+import com.gnua_aruht.cinemate.data.db.model.Movie
 import com.smarttoolfactory.ratingbar.RatingBar
 import com.smarttoolfactory.ratingbar.model.GestureStrategy
 import com.smarttoolfactory.ratingbar.model.RateChangeStrategy
@@ -38,6 +45,7 @@ import com.smarttoolfactory.ratingbar.model.RateChangeStrategy
 @Composable
 fun MoviesWithTitleRow(
     title: String,
+    movies : List<Movie>,
     movieWidth: Dp,
     onViewAllClicked: () -> Unit,
     modifier: Modifier = Modifier
@@ -54,6 +62,7 @@ fun MoviesWithTitleRow(
             modifier = Modifier.fillMaxWidth()
         )
         MovieRows(
+            movies = movies,
             onMovieClicked = {},
             movieWidth = movieWidth,
         )
@@ -65,6 +74,7 @@ fun MoviesWithTitleRow(
 @Composable
 fun MovieRows(
     movieWidth: Dp,
+    movies : List<Movie>,
     onMovieClicked: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = dimensionResource(R.dimen.default_padding)),
@@ -85,8 +95,9 @@ fun MovieRows(
         horizontalArrangement = Arrangement.spacedBy(12.dp),
         contentPadding = contentPadding
     ) {
-        items(7) {
+        items(movies) {
             MovieCard(
+                movie = it,
                 modifier = Modifier
                     .width(movieWidth)
                     .aspectRatio(0.54f)
@@ -103,20 +114,30 @@ fun MovieRows(
 
 
 @Composable
-fun MovieCard(modifier: Modifier = Modifier) {
+fun MovieCard(
+    movie : Movie,
+    modifier: Modifier = Modifier
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ) {
-        Box(
+        AsyncImage(
+            model = ImageRequest
+                .Builder(LocalContext.current)
+                .data("https://image.tmdb.org/t/p/w500/${movie.poster}")
+                .crossfade(true)
+                .build(),
+            contentScale = ContentScale.Companion.Crop,
+            contentDescription = "Icon",
             modifier = Modifier
                 .weight(1f)
                 .fillMaxSize()
                 .clip(MaterialTheme.shapes.medium)
-                .background(Color.White)
+//                .background(Color.White)
         )
         Text(
-            text = "Movie title",
+            text = movie.title,
             color = Color.White,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis

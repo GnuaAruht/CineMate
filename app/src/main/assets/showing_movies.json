@@ -1,0 +1,52 @@
+[
+  {
+    "id" : 1,
+    "title" : "Wicked",
+    "runtime" : "2h 10min",
+    "releaseYear" : "2024",
+    "rating" : 6.8,
+    "poster" : "xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
+    "overview" : "Elphaba, a young woman misunderstood because of her green skin, and Glinda, a popular aristocrat gilded by privilege, become unlikely friends in the fantastical Land of Oz. As the two women struggle with their opposing personalities, their friendship is tested as both begin to fulfill their destinies as Glinda the Good and the Wicked Witch of the West.",
+    "genres" : "Drama,Fantasy,Romance"
+  },
+  {
+    "id" : 2,
+    "title" : "Moana 2",
+    "runtime" : "2h 10min",
+    "releaseYear" : "2024",
+    "rating" : 6.8,
+    "poster" : "yh64qw9mgXBvlaWDi7Q9tpUBAvH.jpg",
+    "overview" : "After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
+    "genres" : "Animation,Adventure,Comedy"
+  },
+  {
+    "id" : 3,
+    "title" : "The Substance",
+    "runtime" : "2h 10min",
+    "releaseYear" : "2024",
+    "rating" : 7.6,
+    "poster" : "lqoMzCcZYEFK729d6qzt349fB4o.jpg",
+    "overview" : "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
+    "genres" : "Drama,Horror,Sci-fi"
+  },
+  {
+    "id" : 4,
+    "title" : "Red One",
+    "runtime" : "2h 10min",
+    "releaseYear" : "2024",
+    "rating" : 8.2,
+    "poster" : "cdqLnri3NEGcmfnqwk2TSIYtddg.jpg",
+    "overview" : "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
+    "genres" : "Action,Comedy,Fantasy"
+  },
+  {
+    "id" : 5,
+    "title" : "Heretic",
+    "runtime" : "2h 10min",
+    "releaseYear" : "2024",
+    "rating" : 4.5,
+    "poster" : "5HJqjCTcaE1TFwnNh3Dn21be2es.jpg",
+    "overview" : "Two young missionaries are forced to prove their faith when they knock on the wrong door and are greeted by a diabolical Mr. Reed, becoming ensnared in his deadly game of cat-and-mouse.",
+    "genres" : "Horror,Thriller"
+  }
+]

@@ -22,12 +22,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import coil3.compose.AsyncImage
+import coil3.request.ImageRequest
+import coil3.request.crossfade
 import com.gnua_aruht.cinemate.R
+import com.gnua_aruht.cinemate.data.db.model.Trailer
 import dev.chrisbanes.haze.HazeState
 import dev.chrisbanes.haze.haze
 import dev.chrisbanes.haze.hazeChild
@@ -37,12 +43,13 @@ import dev.chrisbanes.haze.materials.HazeMaterials
 @Composable
 fun TrailersWithTitleRow(
     pageSize: PageSize,
+    trailers : List<Trailer>,
     onViewAllClicked: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = dimensionResource(R.dimen.default_padding)),
     pageSpacing: Dp = dimensionResource(R.dimen.padding_medium),
 ) {
-    val pagerState = rememberPagerState(pageCount = { 5 })
+    val pagerState = rememberPagerState(pageCount = { trailers.size })
     Column(
         modifier = modifier
             .fillMaxWidth()
@@ -70,6 +77,7 @@ fun TrailersWithTitleRow(
             pageSpacing = pageSpacing
         ) {
             TrailerItem(
+                trailer = trailers[it],
                 modifier = Modifier
                     .fillMaxSize()
                     .aspectRatio(1.8f)
@@ -82,16 +90,24 @@ fun TrailersWithTitleRow(
 
 @OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
-fun TrailerItem(modifier: Modifier = Modifier) {
-
+fun TrailerItem(
+    trailer: Trailer,
+    modifier: Modifier = Modifier
+) {
     val hazeState = remember { HazeState() }
 
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
-        Box(
+        AsyncImage(
+            model = ImageRequest
+                .Builder(LocalContext.current)
+                .data("https://image.tmdb.org/t/p/w500/${trailer.poster}")
+                .crossfade(true)
+                .build(),
+            contentScale = ContentScale.Companion.Crop,
+            contentDescription = "Icon",
             modifier = modifier
                 .fillMaxSize()
                 .clip(MaterialTheme.shapes.medium)
-                .background(Color.Gray)
                 .haze(state = hazeState),
             )
         PlayButton(

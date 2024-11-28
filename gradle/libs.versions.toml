@@ -20,6 +20,7 @@ protobuf-plugin = "0.9.4"
 composeRatingbar = "2.1.1"
 materialIcons = "1.7.5"
 haze = "0.7.3"
+room-verison = "2.6.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -51,6 +52,9 @@ androidx-material-icons-core = { module = "androidx.compose.material:material-ic
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcons" }
 haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
 haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
+room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-verison" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-verison" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-verison" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
