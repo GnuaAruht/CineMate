@@ -26,6 +26,7 @@ fun HomeScreen(
     uiState: HomeUIState,
     trailerPageSize: PageSize,
     movieItemWidth: Dp,
+    onMovieClicked: (Movie) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -54,6 +55,7 @@ fun HomeScreen(
                 upcomingMovies = uiState.homeFeed.upcomingMovies,
                 trailerPageSize = trailerPageSize,
                 movieItemWidth = movieItemWidth,
+                onMovieClicked = onMovieClicked,
                 modifier = Modifier.padding(it)
             )
         }
@@ -67,6 +69,7 @@ private fun HomeBody(
     upcomingMovies: List<Movie>,
     trailerPageSize: PageSize,
     movieItemWidth: Dp,
+    onMovieClicked : (Movie) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -95,6 +98,7 @@ private fun HomeBody(
                 title = "Now Playing",
                 movies = showingMovies,
                 movieWidth = movieItemWidth,
+                onMovieClicked = onMovieClicked,
                 onViewAllClicked = {}
             )
         }
@@ -104,6 +108,7 @@ private fun HomeBody(
                 title = "Upcoming",
                 movies = upcomingMovies,
                 movieWidth = movieItemWidth,
+                onMovieClicked = onMovieClicked,
                 onViewAllClicked = {}
             )
         }

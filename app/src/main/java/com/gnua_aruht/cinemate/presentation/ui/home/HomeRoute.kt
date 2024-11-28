@@ -12,11 +12,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
+import com.gnua_aruht.cinemate.data.db.model.Movie
 import com.gnua_aruht.cinemate.presentation.navigation.Route
 
 
 fun NavGraphBuilder.homeRoute(
     widthSizeClass: WindowWidthSizeClass,
+    onMovieClicked : (Movie) -> Unit,
     modifier: Modifier = Modifier,
 ) {
 
@@ -42,6 +44,7 @@ fun NavGraphBuilder.homeRoute(
             uiState = uiState,
             trailerPageSize = trailerPageSize,
             movieItemWidth = if (widthSizeClass == WindowWidthSizeClass.Expanded) 180.dp else 120.dp,
+            onMovieClicked = onMovieClicked,
             modifier = modifier.fillMaxSize(),
         )
 

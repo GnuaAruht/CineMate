@@ -28,6 +28,7 @@ class HomeViewModel @Inject constructor(getHomeFeed: GetHomeFeed) : ViewModel() 
         _uiState.update { it.copy(loading = true) }
         viewModelScope.launch {
             val homeFeed = getHomeFeed()
+            kotlinx.coroutines.delay(1000L)
             _uiState.update {
                 it.copy(homeFeed = homeFeed)
             }

@@ -6,6 +6,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import com.gnua_aruht.cinemate.presentation.ui.detail.detailRoute
 import com.gnua_aruht.cinemate.presentation.ui.home.homeRoute
 import com.gnua_aruht.cinemate.presentation.ui.intro.introRoute
 
@@ -31,7 +32,14 @@ fun AppNavGraph(
 
         homeRoute(
             widthSizeClass = windowSizeClass.widthSizeClass,
+            onMovieClicked = navController::navigateToDetail
         )
+
+        detailRoute(
+            widthSizeClass = windowSizeClass.widthSizeClass,
+            onBackPressed = navController::popBackStack
+        )
+
 
     }
 }

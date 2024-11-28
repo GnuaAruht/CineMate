@@ -47,6 +47,7 @@ fun MoviesWithTitleRow(
     title: String,
     movies : List<Movie>,
     movieWidth: Dp,
+    onMovieClicked: (Movie) -> Unit,
     onViewAllClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -63,7 +64,7 @@ fun MoviesWithTitleRow(
         )
         MovieRows(
             movies = movies,
-            onMovieClicked = {},
+            onMovieClicked = onMovieClicked,
             movieWidth = movieWidth,
         )
     }
@@ -75,7 +76,7 @@ fun MoviesWithTitleRow(
 fun MovieRows(
     movieWidth: Dp,
     movies : List<Movie>,
-    onMovieClicked: () -> Unit,
+    onMovieClicked: (Movie) -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = dimensionResource(R.dimen.default_padding)),
 ) {
@@ -102,7 +103,7 @@ fun MovieRows(
                     .width(movieWidth)
                     .aspectRatio(0.54f)
                     .clickable(
-                        onClick = {  },
+                        onClick = { onMovieClicked(it) },
                         interactionSource = null,
                         indication = null
                     )
