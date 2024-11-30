@@ -35,6 +35,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.gnua_aruht.cinemate.BuildConfig
 import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.data.db.model.Movie
 import com.smarttoolfactory.ratingbar.RatingBar
@@ -126,7 +127,7 @@ fun MovieCard(
         AsyncImage(
             model = ImageRequest
                 .Builder(LocalContext.current)
-                .data("https://image.tmdb.org/t/p/w500/${movie.poster}")
+                .data("${BuildConfig.IMAGE_URL}${movie.poster}")
                 .crossfade(true)
                 .build(),
             contentScale = ContentScale.Companion.Crop,

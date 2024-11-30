@@ -17,12 +17,14 @@ import com.gnua_aruht.cinemate.presentation.theme.CineMateTheme
 fun AppButton(
     text: String,
     onClick: () -> Unit,
+    enabled : Boolean = true,
     modifier: Modifier = Modifier
 ) {
     Button(
         modifier = modifier.heightIn(min = 56.dp),
         onClick = onClick,
-        shape = MaterialTheme.shapes.medium
+        shape = MaterialTheme.shapes.medium,
+        enabled = enabled
     ) {
         Text(
             text = text,

@@ -27,8 +27,12 @@ android {
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500/\"")
+        }
         release {
             isMinifyEnabled = false
+            buildConfigField("String", "IMAGE_URL", "\"https://image.tmdb.org/t/p/w500/\"")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -47,6 +51,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.5.1"
@@ -94,8 +99,8 @@ dependencies {
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-    implementation("io.coil-kt.coil3:coil-compose:3.0.3")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.3")
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network.okhttp)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
