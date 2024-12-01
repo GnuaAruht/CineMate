@@ -1,5 +1,5 @@
-import androidx.compose.animation.core.Animatable
-import androidx.compose.animation.core.tween
+package com.gnua_aruht.cinemate.presentation.ui.detail.booking.components
+
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,7 +14,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -34,16 +33,27 @@ fun DateSelectionRow(
     contentPadding: PaddingValues = PaddingValues(0.dp)
 ) {
 
-    val animatedValues = List(dateStringList.size) { remember { Animatable(0f) } }
-
-    LaunchedEffect(Unit) {
-        animatedValues.forEachIndexed { index, animation ->
-            animation.animateTo(
-                targetValue = 1f,
-                animationSpec = tween(durationMillis = 60, delayMillis = index * 10)
-            )
-        }
-    }
+//    val animatedValues = List(dateStringList.size) { remember { Animatable(0f) } }
+//    val offsetValues = List(dateStringList.size) { remember { Animatable(100f) } }
+//
+//    LaunchedEffect(Unit) {
+//        launch {
+//            animatedValues.forEachIndexed { index, animatable ->
+//                animatable.animateTo(
+//                    targetValue = 1f,
+//                    animationSpec = tween(durationMillis = 60, delayMillis = index * 10)
+//                )
+//            }
+//        }
+//        launch {
+//            offsetValues.forEachIndexed { index, animatable ->
+//                animatable.animateTo(
+//                    targetValue = 0f,
+//                    animationSpec = tween(durationMillis = 60, delayMillis = index * 10)
+//                )
+//            }
+//        }
+//    }
 
     LazyRow(
         modifier = modifier.fillMaxWidth(),
@@ -59,11 +69,6 @@ fun DateSelectionRow(
                 isSelected = date == selectedDate,
                 modifier = Modifier
                     .width(76.dp)
-                    .graphicsLayer {
-                        alpha = animatedValues[index].value
-                        scaleX = animatedValues[index].value
-                        scaleY = animatedValues[index].value
-                    }
                     .clickable(
                         onClick = { onDateSelected(date) },
                         interactionSource = null,

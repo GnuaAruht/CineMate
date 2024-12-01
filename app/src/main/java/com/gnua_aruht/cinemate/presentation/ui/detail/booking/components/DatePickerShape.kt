@@ -1,4 +1,4 @@
-
+package com.gnua_aruht.cinemate.presentation.ui.detail.booking.components
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size

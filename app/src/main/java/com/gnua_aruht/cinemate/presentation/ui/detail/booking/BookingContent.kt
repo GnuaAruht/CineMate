@@ -25,7 +25,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.gnua_aruht.cinemate.presentation.theme.CineMateTheme
-import com.gnua_aruht.cinemate.presentation.ui.detail.booking.SeatInfo
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.SeatInfoData
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.DateSelectionRow
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.SeatLayout
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.TimeSelectionRow
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getDateList
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getSeatLayoutForDate
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getTimeList
@@ -38,15 +41,17 @@ fun BookingContent(
 
     val dateList = rememberSaveable { getDateList(5) }
     val timeList = rememberSaveable { getTimeList() }
-    val seatInfoMap = rememberSaveable { mutableMapOf<String, SeatInfo>() }
+    val seatInfoDataMap = rememberSaveable { mutableMapOf<String, SeatInfoData>() }
 
     var selectedDate by rememberSaveable { mutableStateOf(dateList.first()) }
     var selectedTime by rememberSaveable { mutableStateOf(timeList.first()) }
 
     val selectedDateTime = "$selectedDate $selectedTime"
-    val selectedSeatInfo = seatInfoMap.getOrPut(selectedDateTime) {
+    val selectedSeatInfoData = seatInfoDataMap.getOrPut(selectedDateTime) {
         getSeatLayoutForDate(selectedDateTime)
     }
+
+
 
     Scaffold(
         modifier = modifier.fillMaxWidth(),
@@ -69,13 +74,16 @@ fun BookingContent(
                     selectedTime = selectedTime,
                     onTimeSelected = { newTime -> selectedTime = newTime },
                     contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)
+                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
                 )
 
-//                SeatContent(
-//                    seatInfo = selectedSeatInfo,
-//                    modifier = Modifier.fillMaxSize()
-//                )
+                SeatLayout(
+                    itemSize = 36.dp, // todo update item size according to window width
+                    seatInfoData = selectedSeatInfoData,
+                    selectedSeats = emptyList(), // todo update selected seat list
+                    onSeatClicked = { },
+                    modifier = Modifier.fillMaxWidth()
+                )
 
             }
         },
@@ -84,6 +92,7 @@ fun BookingContent(
                 AppButton(
                     text = "Buy ticket",
                     onClick = {},
+                    enabled = false,
                     modifier = Modifier
                         .weight(1f)
                         .wrapContentWidth()
