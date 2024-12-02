@@ -37,7 +37,7 @@ fun SeatContent(
     itemSize: Dp,
     seatInfoData: SeatInfoData,
     selectedSeats: List<Seat>,
-    onSeatClicked: (Seat) -> Unit,
+    onSeatSelected: (Boolean,Seat) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -65,14 +65,14 @@ fun SeatContent(
                     selectedSeats = selectedSeats,
                     horizontalArrangement = arrangement,
                     modifier = Modifier.fillMaxWidth(),
-                    onSeatClicked = onSeatClicked,
+                    onSeatSelected = onSeatSelected,
                 )
             }
 
             SeatStatusRow(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 8.dp)
+                    .padding(top = 24.dp)
             )
 
         }
@@ -88,7 +88,7 @@ fun SeatRow(
     selectedSeats: List<Seat>,
     horizontalArrangement: Arrangement.Horizontal,
     modifier: Modifier = Modifier,
-    onSeatClicked: (Seat) -> Unit,
+    onSeatSelected: (Boolean,Seat) -> Unit,
 ) {
     Row(
         modifier = modifier
@@ -98,15 +98,16 @@ fun SeatRow(
     ) {
         seatInfoList.forEach { seatInfo ->
 
+            val selected = selectedSeats.any { it.id == seatInfo.seat.id }
             val clickableModifier =
                 if (!seatInfo.reserved) {
-                    Modifier.clickable { onSeatClicked(seatInfo.seat) }
+                    Modifier.clickable { onSeatSelected(!selected, seatInfo.seat) }
                 } else Modifier
 
             val color = if (seatInfo.reserved) {
                 Color.White.copy(alpha = 0.2f)
             } else {
-                if (selectedSeats.any { it.id == seatInfo.seat.id })
+                if (selected)
                     MaterialTheme.colorScheme.primary
                 else Color.White
             }
@@ -116,7 +117,6 @@ fun SeatRow(
                 modifier = Modifier
                     .size(itemSize)
                     .then(clickableModifier)
-                // todo add clickable
             )
 
         }
@@ -170,7 +170,7 @@ private fun SeatContentPreview() {
         SeatContent(
             itemSize = 36.dp,
             seatInfoData = getSeatLayoutForDate("testDate"),
-            onSeatClicked = {},
+            onSeatSelected = { _, _ -> },
             selectedSeats = emptyList()
         )
     }

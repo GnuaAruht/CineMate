@@ -1,6 +1,6 @@
 package com.gnua_aruht.cinemate.presentation.ui.detail
 
-import BookingContent
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.BookingContent
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateDpAsState
@@ -113,11 +113,14 @@ fun DetailScreen(
                 DetailState.INFO -> InfoContent(
                     movie = movie,
                     onBackPressed = onBackPressed,
+                    widthSizeClass = widthSizeClass,
                     onBuyTicketPressed = { state = DetailState.BOOKING },
                     modifier = Modifier.fillMaxSize()
                 )
                 DetailState.BOOKING -> BookingContent(
+                    title = movie.title,
                     onBackPressed = { state = DetailState.INFO },
+                    widthSizeClass = widthSizeClass,
                     modifier = Modifier.fillMaxSize()
                 )
             }

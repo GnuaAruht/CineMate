@@ -6,7 +6,7 @@ import kotlin.random.Random
 
 data class Seat(
     val id: String,
-    val price: Float,
+    val price: Int,
 )
 
 data class SeatInfo(
@@ -16,7 +16,7 @@ data class SeatInfo(
 
 fun getSeatRowFor(
     prefixId: String,
-    price: Float,
+    price: Int,
     count: Int,
 ): List<SeatInfo> {
     return List(count) {
@@ -34,12 +34,12 @@ fun getSeatRowFor(
 data class SeatInfoData(
     val id: String,
     val data: Map<String, List<SeatInfo>> = mapOf(
-        "A" to getSeatRowFor(prefixId = "A", price = 20f, count = 5),
-        "B" to getSeatRowFor(prefixId = "B", price = 18f, count = 7),
-        "C" to getSeatRowFor(prefixId = "C", price = 16f, count = 8),
-        "D" to getSeatRowFor(prefixId = "D", price = 14f, count = 7),
-        "E" to getSeatRowFor(prefixId = "E", price = 12f, count = 8),
-        "F" to getSeatRowFor(prefixId = "F", price = 10f, count = 5)
+        "A" to getSeatRowFor(prefixId = "A", price = 20, count = 5),
+        "B" to getSeatRowFor(prefixId = "B", price = 18, count = 7),
+        "C" to getSeatRowFor(prefixId = "C", price = 16, count = 8),
+        "D" to getSeatRowFor(prefixId = "D", price = 14, count = 7),
+        "E" to getSeatRowFor(prefixId = "E", price = 12, count = 8),
+        "F" to getSeatRowFor(prefixId = "F", price = 10, count = 5)
     )
 )
 

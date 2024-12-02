@@ -1,3 +1,6 @@
+package com.gnua_aruht.cinemate.presentation.ui.detail.booking
+
+import AppButton
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,27 +17,38 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import com.gnua_aruht.cinemate.presentation.theme.CineMateTheme
-import com.gnua_aruht.cinemate.presentation.ui.detail.booking.SeatInfoData
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.DateSelectionRow
+import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.SeatContent
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.SeatLayout
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.TimeSelectionRow
-import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getDateList
-import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getSeatLayoutForDate
-import com.gnua_aruht.cinemate.presentation.ui.detail.booking.getTimeList
+import java.text.NumberFormat
+import java.util.Locale
+
+private val Int.toCurrency : String
+    get() {
+        val format = NumberFormat.getCurrencyInstance(Locale.US).apply {
+            maximumFractionDigits = 0
+        }
+        return format.format(this)
+    }
 
 @Composable
 fun BookingContent(
+    title: String,
+    widthSizeClass: WindowWidthSizeClass,
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -50,13 +64,18 @@ fun BookingContent(
     val selectedSeatInfoData = seatInfoDataMap.getOrPut(selectedDateTime) {
         getSeatLayoutForDate(selectedDateTime)
     }
-
-
+    val selectedSeatList = remember { mutableStateListOf<Seat>() }
+    val totalCost = selectedSeatList.sumOf { it.price }
 
     Scaffold(
         modifier = modifier.fillMaxWidth(),
         containerColor = Color.Transparent,
-        topBar = { BookingAppBar(onBackPressed = onBackPressed) },
+        topBar = {
+            BookingAppBar(
+                title = title,
+                onBackPressed = onBackPressed
+            )
+        },
         content = { paddingValues ->
 
             Column(modifier = Modifier.padding(paddingValues)) {
@@ -64,35 +83,53 @@ fun BookingContent(
                 DateSelectionRow(
                     dateStringList = dateList,
                     selectedDate = selectedDate,
-                    onDateSelected = { newDate -> selectedDate = newDate },
+                    onDateSelected = { newDate ->
+                        selectedDate = newDate
+                        selectedSeatList.clear() // reset selected seats
+                    },
                     contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 12.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 12.dp)
                 )
 
                 TimeSelectionRow(
                     timeListString = timeList,
                     selectedTime = selectedTime,
-                    onTimeSelected = { newTime -> selectedTime = newTime },
+                    onTimeSelected = { newTime ->
+                        selectedTime = newTime
+                        selectedSeatList.clear() // reset selected seats
+                    },
                     contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(bottom = 8.dp)
                 )
 
-                SeatLayout(
-                    itemSize = 36.dp, // todo update item size according to window width
-                    seatInfoData = selectedSeatInfoData,
-                    selectedSeats = emptyList(), // todo update selected seat list
-                    onSeatClicked = { },
-                    modifier = Modifier.fillMaxWidth()
-                )
+                SeatLayout(modifier = Modifier.fillMaxWidth()) { paddingValues ->
+                    SeatContent(
+                        itemSize = 36.dp, // todo update item size according to window width
+                        seatInfoData = selectedSeatInfoData,
+                        selectedSeats = selectedSeatList, // todo update selected seat list
+                        onSeatSelected = { selected, newSeat ->
+                            if (selected) {
+                                selectedSeatList.add(newSeat)
+                            } else {
+                                selectedSeatList.remove(newSeat)
+                            }
+                        },
+                        modifier = Modifier.padding(paddingValues)
+                    )
+                }
 
             }
         },
         bottomBar = {
             BottomAppBar(modifier = Modifier.fillMaxWidth(), containerColor = Color.Transparent) {
                 AppButton(
-                    text = "Buy ticket",
+                    text = "Buy ticket ${if (totalCost > 0) totalCost.toCurrency else ""}",
                     onClick = {},
-                    enabled = false,
+                    enabled = totalCost > 0,
                     modifier = Modifier
                         .weight(1f)
                         .wrapContentWidth()
@@ -106,6 +143,7 @@ fun BookingContent(
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun BookingAppBar(
+    title: String,
     onBackPressed: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -122,8 +160,10 @@ private fun BookingAppBar(
         },
         title = {
             Text(
-                "This will be movie name",
-                style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
+                title,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
@@ -132,12 +172,4 @@ private fun BookingAppBar(
         )
     )
 
-}
-
-@Preview
-@Composable
-private fun BookingContentPreview() {
-    CineMateTheme {
-        BookingContent(onBackPressed = {})
-    }
 }
