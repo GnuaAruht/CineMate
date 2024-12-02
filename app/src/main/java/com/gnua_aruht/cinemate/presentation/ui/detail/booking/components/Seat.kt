@@ -56,7 +56,7 @@ fun Seat(
             onDrawBehind {
                 drawPath(seatPath, color = color)
                 clipPath(seatPath) {
-                    drawPath(linePath, color = Color.Black, style = Stroke(width = 4f))
+                    drawPath(linePath, color = Color.Black, style = Stroke(width = 3.2f))
                 }
             }
 

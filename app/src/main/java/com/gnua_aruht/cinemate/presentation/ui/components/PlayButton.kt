@@ -15,7 +15,7 @@ fun PlayButton(modifier: Modifier = Modifier) {
 
     Surface(
         modifier = modifier,
-        color = Color.White.copy(alpha = 0.6f),
+        color = Color.White.copy(alpha = 0.48f),
         shape = CircleShape
     ) {
         Icon(

@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -14,14 +15,11 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
@@ -35,11 +33,6 @@ import coil3.request.crossfade
 import com.gnua_aruht.cinemate.BuildConfig
 import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.data.db.model.Trailer
-import dev.chrisbanes.haze.HazeState
-import dev.chrisbanes.haze.haze
-import dev.chrisbanes.haze.hazeChild
-import dev.chrisbanes.haze.materials.ExperimentalHazeMaterialsApi
-import dev.chrisbanes.haze.materials.HazeMaterials
 
 @Composable
 fun TrailersWithTitleRow(
@@ -88,14 +81,11 @@ fun TrailersWithTitleRow(
 
 }
 
-
-@OptIn(ExperimentalHazeMaterialsApi::class)
 @Composable
 fun TrailerItem(
     trailer: Trailer,
     modifier: Modifier = Modifier
 ) {
-    val hazeState = remember { HazeState() }
 
     Box(modifier = modifier, contentAlignment = Alignment.Center) {
         AsyncImage(
@@ -106,19 +96,12 @@ fun TrailerItem(
                 .build(),
             contentScale = ContentScale.Companion.Crop,
             contentDescription = "Icon",
-            modifier = modifier
-                .fillMaxSize()
-                .clip(MaterialTheme.shapes.medium)
-                .haze(state = hazeState),
-            )
-        PlayButton(
+            modifier = modifier.fillMaxSize().clip(MaterialTheme.shapes.medium))
+        Spacer(
             modifier = Modifier
-                .size(74.dp)
-                .hazeChild(
-                    state = hazeState,
-                    shape = CircleShape,
-                    style = HazeMaterials.ultraThin(containerColor = Color.Gray)
-                ),
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background.copy(alpha = 0.2f))
         )
+        PlayButton(modifier = Modifier.size(74.dp))
     }
 }

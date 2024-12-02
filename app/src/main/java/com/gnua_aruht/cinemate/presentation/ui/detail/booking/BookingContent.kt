@@ -27,9 +27,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.DateSelectionRow
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.SeatContent
 import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.SeatLayout
@@ -110,7 +112,7 @@ fun BookingContent(
                     SeatContent(
                         itemSize = 36.dp, // todo update item size according to window width
                         seatInfoData = selectedSeatInfoData,
-                        selectedSeats = selectedSeatList, // todo update selected seat list
+                        selectedSeats = selectedSeatList,
                         onSeatSelected = { selected, newSeat ->
                             if (selected) {
                                 selectedSeatList.add(newSeat)
@@ -164,6 +166,7 @@ private fun BookingAppBar(
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold),
+                modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_medium))
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(

@@ -20,7 +20,6 @@ protobuf-javalite = "4.26.1"
 protobuf-plugin = "0.9.4"
 composeRatingbar = "2.1.1"
 materialIcons = "1.7.5"
-haze = "0.7.3"
 room-verison = "2.6.1"
 
 [libraries]
@@ -51,8 +50,6 @@ androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecyc
 compose-ratingbar = { module = "com.github.SmartToolFactory:Compose-RatingBar", version.ref = "composeRatingbar" }
 androidx-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIcons" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIcons" }
-haze = { module = "dev.chrisbanes.haze:haze", version.ref = "haze" }
-haze-materials = { module = "dev.chrisbanes.haze:haze-materials", version.ref = "haze" }
 room-ktx = { module = "androidx.room:room-ktx", version.ref = "room-verison" }
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room-verison" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-verison" }
