@@ -37,7 +37,7 @@ import com.gnua_aruht.cinemate.data.db.model.Trailer
 @Composable
 fun TrailersWithTitleRow(
     pageSize: PageSize,
-    trailers : List<Trailer>,
+    trailers: List<Trailer>,
     onViewAllClicked: () -> Unit,
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(horizontal = dimensionResource(R.dimen.default_padding)),
@@ -96,7 +96,8 @@ fun TrailerItem(
                 .build(),
             contentScale = ContentScale.Companion.Crop,
             contentDescription = "Icon",
-            modifier = modifier.fillMaxSize().clip(MaterialTheme.shapes.medium))
+            modifier = modifier.fillMaxSize().clip(MaterialTheme.shapes.medium)
+        )
         Spacer(
             modifier = Modifier
                 .fillMaxSize()

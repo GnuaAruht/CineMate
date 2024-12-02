@@ -41,7 +41,6 @@ import com.gnua_aruht.cinemate.presentation.theme.backgroundColor
 
 @Composable
 fun IntroScreen(
-    buttonWidthFraction: Float,
     onGetStarted: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -79,7 +78,7 @@ fun IntroScreen(
                 Column(
                     modifier = Modifier
                         .padding(paddingValues)
-                        .padding(horizontal = dimensionResource(R.dimen.default_padding))
+                        .padding(all = dimensionResource(R.dimen.default_padding))
                         .fillMaxSize(),
                     horizontalAlignment = Alignment.Start,
                     verticalArrangement = Arrangement.Center
@@ -94,21 +93,27 @@ fun IntroScreen(
                         },
                         color = Color.White,
                         style = TextStyle(
-                            fontSize = 38.sp,
+                            fontSize = 42.sp,
                             fontWeight = FontWeight.Bold
                         )
                     )
                     Text(
                         text = stringResource(R.string.intro_text),
                         color = MaterialTheme.colorScheme.onSurface,
-                        style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
+                        style = TextStyle(
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold
+                        ),
                         modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
                     )
                     Text(
                         text = stringResource(R.string.intro_description),
                         color = MaterialTheme.colorScheme.onSurface,
-                        style = MaterialTheme.typography.bodyLarge,
-                        modifier = Modifier.widthIn(max = 700.dp)
+                        style = TextStyle(
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Normal
+                        ),
+                        modifier = Modifier.widthIn(max = 688.dp)
                     )
                 }
             },
@@ -123,7 +128,7 @@ fun IntroScreen(
                         modifier = Modifier
                             .weight(1f)
                             .wrapContentWidth()
-                            .fillMaxWidth(fraction = buttonWidthFraction)
+                            .fillMaxWidth(fraction = 0.76f)
                     )
                 }
             }
@@ -135,6 +140,6 @@ fun IntroScreen(
 @Composable
 private fun IntroScreenPreview() {
     CineMateTheme {
-        IntroScreen(onGetStarted = {}, buttonWidthFraction = 0.7f)
+        IntroScreen(onGetStarted = {})
     }
 }

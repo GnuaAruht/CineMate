@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.coerceIn
 import androidx.compose.ui.unit.dp
 import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.data.db.model.Movie
@@ -47,6 +49,7 @@ fun HomeScreen(
                     .padding(it)
                     .fillMaxSize()
                     .wrapContentSize(align = Alignment.Center)
+                    .size(80.dp)
             )
         } else {
             HomeBody(

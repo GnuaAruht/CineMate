@@ -12,12 +12,11 @@ import com.gnua_aruht.cinemate.presentation.navigation.Route
 fun NavGraphBuilder.introRoute(
     widthSizeClass: WindowWidthSizeClass,
     onGetStarted: () -> Unit,
-    modifier : Modifier = Modifier
+    modifier: Modifier = Modifier
 ) {
     composable<Route.Intro> {
         val viewModel = hiltViewModel<IntroViewModel>()
         IntroScreen(
-            buttonWidthFraction = if (widthSizeClass == WindowWidthSizeClass.Expanded) 0.46f else 0.76f,
             onGetStarted = {
                 viewModel.saveAppHasLaunched()
                 onGetStarted()

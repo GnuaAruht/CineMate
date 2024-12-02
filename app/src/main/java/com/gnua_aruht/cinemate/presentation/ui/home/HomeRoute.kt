@@ -1,5 +1,6 @@
 package com.gnua_aruht.cinemate.presentation.ui.home
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.pager.PageSize
 import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
@@ -14,6 +15,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.gnua_aruht.cinemate.data.db.model.Movie
 import com.gnua_aruht.cinemate.presentation.navigation.Route
+import kotlin.math.roundToInt
 
 
 fun NavGraphBuilder.homeRoute(
@@ -32,9 +34,10 @@ fun NavGraphBuilder.homeRoute(
                     availableSpace: Int,
                     pageSpacing: Int
                 ): Int {
+                    Log.d("WidthSizeClass","$widthSizeClass")
                     return when (widthSizeClass) {
-                        WindowWidthSizeClass.Expanded -> (availableSpace - (2 * pageSpacing)) / 2
-                        else -> availableSpace - pageSpacing
+                        WindowWidthSizeClass.Compact -> availableSpace - pageSpacing
+                        else -> ((availableSpace - (2 * pageSpacing)) / 1.4f).roundToInt()
                     }
                 }
             }
@@ -43,7 +46,7 @@ fun NavGraphBuilder.homeRoute(
         HomeScreen(
             uiState = uiState,
             trailerPageSize = trailerPageSize,
-            movieItemWidth = if (widthSizeClass == WindowWidthSizeClass.Expanded) 180.dp else 120.dp,
+            movieItemWidth = if (widthSizeClass == WindowWidthSizeClass.Compact) 134.dp else 168.dp,
             onMovieClicked = onMovieClicked,
             modifier = modifier.fillMaxSize(),
         )
