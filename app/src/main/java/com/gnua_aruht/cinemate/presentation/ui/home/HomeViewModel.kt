@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.gnua_aruht.cinemate.data.repository.HomeFeed
 import com.gnua_aruht.cinemate.domain.usecase.GetHomeFeed
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
@@ -27,8 +28,8 @@ class HomeViewModel @Inject constructor(getHomeFeed: GetHomeFeed) : ViewModel() 
     init {
         _uiState.update { it.copy(loading = true) }
         viewModelScope.launch {
+            delay(1000L) // add some delay to show loading
             val homeFeed = getHomeFeed()
-            kotlinx.coroutines.delay(1000L)
             _uiState.update {
                 it.copy(homeFeed = homeFeed)
             }

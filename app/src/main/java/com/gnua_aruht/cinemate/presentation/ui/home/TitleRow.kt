@@ -11,8 +11,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.sp
 import com.gnua_aruht.cinemate.R
 
 
@@ -29,10 +31,12 @@ fun TitleRow(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-
         Text(
             text = title,
-            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+            style = TextStyle(
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold
+            ),
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
@@ -41,6 +45,7 @@ fun TitleRow(
         Text(
             text = label,
             color = MaterialTheme.colorScheme.onSurface,
+            style = TextStyle(fontSize = 18.sp),
             modifier = Modifier.clickable(role = Role.Button) { onLabelClicked() }
         )
 

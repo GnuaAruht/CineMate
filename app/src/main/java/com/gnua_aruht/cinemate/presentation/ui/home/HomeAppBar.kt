@@ -40,6 +40,8 @@ internal fun HomeAppBar(
     modifier: Modifier = Modifier,
 ) {
 
+    val iconModifier = Modifier.size(32.dp)
+
     TopAppBar(
         modifier = modifier.fillMaxWidth(),
         title = {},
@@ -48,6 +50,7 @@ internal fun HomeAppBar(
                 Icon(
                     imageVector = Icons.Rounded.Menu,
                     contentDescription = null,
+                    modifier = iconModifier
                 )
             }
         },
@@ -56,21 +59,23 @@ internal fun HomeAppBar(
                 Icon(
                     imageVector = Icons.Rounded.Search,
                     contentDescription = null,
+                    modifier = iconModifier
                 )
             }
+            Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_small)))
             IconButton(onClick = onNotificationClicked) {
                 Icon(
                     imageVector = Icons.Rounded.Notifications,
                     contentDescription = null,
+                    modifier = iconModifier
                 )
             }
             Spacer(modifier = Modifier.width(dimensionResource(R.dimen.padding_medium)))
             Image(
                 painter = painterResource(R.drawable.user_profile),
                 contentDescription = null,
-                modifier = Modifier
+                modifier = iconModifier
                     .clip(CircleShape)
-                    .size(34.dp)
                     .background(Color.White)
                     .clickable { onAvatarClicked() }
             )

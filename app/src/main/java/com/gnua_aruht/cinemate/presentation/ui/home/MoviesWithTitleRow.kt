@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyRow
@@ -28,10 +29,13 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
@@ -136,18 +140,23 @@ fun MovieCard(
                 .weight(1f)
                 .fillMaxSize()
                 .clip(MaterialTheme.shapes.medium)
-//                .background(Color.White)
+                .background(Color.DarkGray)
         )
         Text(
             text = movie.title,
             color = Color.White,
             maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            style = TextStyle(
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium
+            ),
+            overflow = TextOverflow.Ellipsis,
+            modifier = Modifier.padding(vertical = 2.dp)
         )
         RatingBar(
             modifier = Modifier
                 .heightIn(min = 24.dp, max = 32.dp)
-                .fillMaxWidth(),
+                .fillMaxWidth(fraction = 0.9f),
             imageVectorFilled = Icons.Rounded.Star,
             imageVectorEmpty = Icons.Rounded.StarOutline,
             rateChangeStrategy = RateChangeStrategy.InstantChange,

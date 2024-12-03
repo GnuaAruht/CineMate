@@ -93,7 +93,7 @@ fun IntroScreen(
                         },
                         color = Color.White,
                         style = TextStyle(
-                            fontSize = 42.sp,
+                            fontSize = 38.sp,
                             fontWeight = FontWeight.Bold
                         )
                     )
@@ -111,7 +111,7 @@ fun IntroScreen(
                         color = MaterialTheme.colorScheme.onSurface,
                         style = TextStyle(
                             fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal
+                            fontWeight = FontWeight.Light
                         ),
                         modifier = Modifier.widthIn(max = 688.dp)
                     )
