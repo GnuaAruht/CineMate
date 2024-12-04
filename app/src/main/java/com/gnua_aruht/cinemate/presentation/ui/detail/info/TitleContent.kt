@@ -23,9 +23,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.smarttoolfactory.ratingbar.RatingBar
 import com.smarttoolfactory.ratingbar.model.GestureStrategy
 import com.smarttoolfactory.ratingbar.model.RateChangeStrategy
+import java.time.format.TextStyle
 
 
 @Composable
@@ -46,7 +48,10 @@ internal fun TitleContent(
             text = title,
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.headlineMedium.copy(fontWeight = FontWeight.Bold),
+            style = androidx.compose.ui.text.TextStyle(
+                fontSize = 26.sp,
+                fontWeight = FontWeight.Bold
+            ),
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
@@ -70,6 +75,7 @@ internal fun TitleContent(
         )
 
         val metaDataTextStyle = MaterialTheme.typography.bodyLarge.copy(
+            fontWeight = FontWeight.Light,
             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.8f)
         )
 

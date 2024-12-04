@@ -26,15 +26,12 @@ fun TimeSelectionRow(
     selectedTime: String,
     onTimeSelected: (String) -> Unit,
     modifier: Modifier = Modifier,
-    contentPadding: PaddingValues = PaddingValues(0.dp),
     horizontalArrangement: Arrangement.Horizontal = Arrangement.spacedBy(12.dp)
 ) {
 
     LazyRow(
-        modifier = modifier
-            .fillMaxWidth()
-            .wrapContentWidth(),
-        contentPadding = contentPadding,
+        modifier = modifier.fillMaxWidth(),
+        contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
         horizontalArrangement = horizontalArrangement
     ) {
         items(timeListString.size) { index ->

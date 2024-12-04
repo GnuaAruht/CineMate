@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
@@ -25,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.dimensionResource
@@ -39,7 +41,7 @@ import com.gnua_aruht.cinemate.presentation.ui.detail.booking.components.TimeSel
 import java.text.NumberFormat
 import java.util.Locale
 
-private val Int.toCurrency : String
+private val Int.toCurrency: String
     get() {
         val format = NumberFormat.getCurrencyInstance(Locale.US).apply {
             maximumFractionDigits = 0
@@ -87,12 +89,10 @@ fun BookingContent(
                     selectedDate = selectedDate,
                     onDateSelected = { newDate ->
                         selectedDate = newDate
-                        selectedSeatList.clear() // reset selected seats
+                        selectedSeatList.clear()
                     },
-                    contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 12.dp)
+                    widthSizeClass = widthSizeClass,
+                    modifier = Modifier.padding(bottom = 12.dp)
                 )
 
                 TimeSelectionRow(
@@ -102,15 +102,18 @@ fun BookingContent(
                         selectedTime = newTime
                         selectedSeatList.clear() // reset selected seats
                     },
-                    contentPadding = PaddingValues(horizontal = 18.dp, vertical = 4.dp),
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(bottom = 8.dp)
                 )
 
-                SeatLayout(modifier = Modifier.fillMaxWidth()) { paddingValues ->
+                SeatLayout(
+                    modifier = Modifier
+                        .widthIn(max = 640.dp)
+                        .align(alignment = Alignment.CenterHorizontally)
+                ) { paddingValues ->
                     SeatContent(
-                        itemSize = 36.dp, // todo update item size according to window width
+                        itemSize = if (widthSizeClass == WindowWidthSizeClass.Compact) 36.dp else 48.dp, // todo update item size according to window width
                         seatInfoData = selectedSeatInfoData,
                         selectedSeats = selectedSeatList,
                         onSeatSelected = { selected, newSeat ->

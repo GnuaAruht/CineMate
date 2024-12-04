@@ -15,9 +15,10 @@ fun SeatLayout(
 ) {
 
     Box(modifier = modifier) {
-        ProjectorBg(modifier = Modifier
-            .fillMaxWidth()
-            .heightIn(min = 120.dp, max = 140.dp)
+        ProjectorBg(
+            modifier = Modifier
+                .fillMaxWidth()
+                .heightIn(min = 120.dp, max = 140.dp)
         )
         content(PaddingValues(top = 88.dp))
     }

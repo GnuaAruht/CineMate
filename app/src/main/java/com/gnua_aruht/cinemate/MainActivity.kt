@@ -13,6 +13,7 @@ import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.datastore.core.DataStore
 import com.gnua_aruht.cinemate.presentation.navigation.AppNavGraph
 import com.gnua_aruht.cinemate.presentation.navigation.Route
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = false
         val appHaveLaunched = runBlocking { userPref.data.first().appHaveLaunched }
         val startDestination = if (appHaveLaunched) Route.Home else Route.Intro
         setContent {

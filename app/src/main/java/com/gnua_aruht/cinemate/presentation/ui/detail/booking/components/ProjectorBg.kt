@@ -77,7 +77,7 @@ fun ProjectorBg(modifier: Modifier = Modifier, ) {
                     drawPath(
                         projectorPath,
                         color = Color.White,
-                        style = Stroke(width = 4.8f, cap = StrokeCap.Round)
+                        style = Stroke(width = 5.2f, cap = StrokeCap.Round)
                     )
                     drawPath(path = gradientPath, brush = linearGradient)
                     drawText(

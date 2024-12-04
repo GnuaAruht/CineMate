@@ -19,7 +19,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.dp
+import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.data.db.model.Movie
 
 @Composable
@@ -42,14 +44,14 @@ fun InfoContent(
                     .padding(
                         top = paddingValues.calculateTopPadding(),
                         bottom = paddingValues.calculateBottomPadding(),
-                        start = 18.dp,
-                        end = 18.dp
+                        start = dimensionResource(R.dimen.default_padding),
+                        end = dimensionResource(R.dimen.default_padding)
                     ),
-                verticalArrangement = Arrangement.spacedBy(space = 18.dp),
+                verticalArrangement = Arrangement.spacedBy(space = dimensionResource(R.dimen.default_padding)),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.weight(2.4f))
-                PlayButton(modifier = Modifier.size(74.dp))
+                PlayButton(modifier = Modifier.size(76.dp))
                 TitleContent(
                     title = movie.title,
                     rating = movie.rating,
