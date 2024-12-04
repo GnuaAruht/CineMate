@@ -7,11 +7,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
 
 @Composable
@@ -29,19 +27,13 @@ internal fun OverViewContent(
             text = "Overview",
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
-            style = TextStyle(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Medium
-            ),
+            style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Medium),
             modifier = Modifier.padding(bottom = 12.dp)
         )
 
         Text(
             text = overview,
-            style = TextStyle(
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Normal
-            ),
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Normal),
             color = MaterialTheme.colorScheme.onSurface,
             textAlign = TextAlign.Center,
         )

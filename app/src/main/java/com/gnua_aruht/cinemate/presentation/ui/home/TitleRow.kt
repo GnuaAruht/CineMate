@@ -33,10 +33,7 @@ fun TitleRow(
     ) {
         Text(
             text = title,
-            style = TextStyle(
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            ),
+            style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
             color = MaterialTheme.colorScheme.onSurface,
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
@@ -45,7 +42,7 @@ fun TitleRow(
         Text(
             text = label,
             color = MaterialTheme.colorScheme.onSurface,
-            style = TextStyle(fontSize = 18.sp),
+            style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.clickable(role = Role.Button) { onLabelClicked() }
         )
 

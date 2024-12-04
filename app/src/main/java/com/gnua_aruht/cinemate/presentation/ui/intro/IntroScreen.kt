@@ -28,13 +28,11 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.gnua_aruht.cinemate.R
 import com.gnua_aruht.cinemate.presentation.theme.CineMateTheme
 import com.gnua_aruht.cinemate.presentation.theme.backgroundColor
@@ -92,27 +90,18 @@ fun IntroScreen(
                             }
                         },
                         color = Color.White,
-                        style = TextStyle(
-                            fontSize = 38.sp,
-                            fontWeight = FontWeight.Bold
-                        )
+                        style = MaterialTheme.typography.headlineLarge.copy(fontWeight = FontWeight.Bold)
                     )
                     Text(
                         text = stringResource(R.string.intro_text),
                         color = MaterialTheme.colorScheme.onSurface,
-                        style = TextStyle(
-                            fontSize = 24.sp,
-                            fontWeight = FontWeight.Bold
-                        ),
+                        style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                         modifier = Modifier.padding(bottom = dimensionResource(R.dimen.padding_medium))
                     )
                     Text(
                         text = stringResource(R.string.intro_description),
                         color = MaterialTheme.colorScheme.onSurface,
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Light
-                        ),
+                        style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Light),
                         modifier = Modifier.widthIn(max = 688.dp)
                     )
                 }

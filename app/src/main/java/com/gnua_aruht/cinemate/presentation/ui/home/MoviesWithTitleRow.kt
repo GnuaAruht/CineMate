@@ -146,10 +146,7 @@ fun MovieCard(
             text = movie.title,
             color = Color.White,
             maxLines = 1,
-            style = TextStyle(
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium
-            ),
+            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Medium),
             overflow = TextOverflow.Ellipsis,
             modifier = Modifier.padding(vertical = 2.dp)
         )
