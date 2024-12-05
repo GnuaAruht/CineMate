@@ -1,52 +1,52 @@
 [
   {
     "id" : 6,
-    "title" : "Wicked",
+    "title" : "Elevation",
     "runtime" : "2h 10min",
     "releaseYear" : "2024",
-    "rating" : 6.8,
-    "poster" : "xDGbZ0JJ3mYaGKy4Nzd9Kph6M9L.jpg",
-    "overview" : "Elphaba, a young woman misunderstood because of her green skin, and Glinda, a popular aristocrat gilded by privilege, become unlikely friends in the fantastical Land of Oz. As the two women struggle with their opposing personalities, their friendship is tested as both begin to fulfill their destinies as Glinda the Good and the Wicked Witch of the West.",
-    "genres" : "Drama,Fantasy,Romance"
+    "rating" : 3.15,
+    "poster" : "uQhYBxOVFU6s9agD49FnGHwJqG5.jpg",
+    "overview" : "A single father and two women venture from the safety of their homes to face monstrous creatures to save the life of a young boy.",
+    "genres" : "Action,Sci-fi,Thriller"
   },
   {
     "id" : 7,
-    "title" : "Moana 2",
+    "title" : "Absolution",
     "runtime" : "2h 10min",
     "releaseYear" : "2024",
-    "rating" : 6.8,
-    "poster" : "yh64qw9mgXBvlaWDi7Q9tpUBAvH.jpg",
-    "overview" : "After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
-    "genres" : "Animation,Adventure,Comedy"
+    "rating" : 3.02,
+    "poster" : "cNtAslrDhk1i3IOZ16vF7df6lMy.jpg",
+    "overview" : "An aging ex-boxer gangster working as muscle for a Boston crime boss receives an upsetting diagnosis.  Despite a faltering memory, he attempts to rectify the sins of his past and reconnect with his estranged children.",
+    "genres" : "Action,Crime,Thriller"
   },
   {
     "id" : 8,
-    "title" : "The Substance",
+    "title" : "We Live in Time",
     "runtime" : "2h 10min",
     "releaseYear" : "2024",
-    "rating" : 7.6,
-    "poster" : "lqoMzCcZYEFK729d6qzt349fB4o.jpg",
-    "overview" : "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
-    "genres" : "Drama,Horror,Sci-fi"
+    "rating" : 3.02,
+    "poster" : "oeDNBgnlGF6rnyX1P1K8Vl2f3lW.jpg",
+    "overview" : "An up-and-coming chef and a recent divorcée find their lives forever changed when a chance encounter brings them together, in a decade-spanning, deeply moving romance.",
+    "genres" : "Drama,Comedy,Romance"
   },
   {
     "id" : 9,
-    "title" : "Red One",
+    "title" : "Conclave",
     "runtime" : "2h 10min",
     "releaseYear" : "2024",
-    "rating" : 8.2,
-    "poster" : "cdqLnri3NEGcmfnqwk2TSIYtddg.jpg",
-    "overview" : "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
-    "genres" : "Action,Comedy,Fantasy"
+    "rating" : 3.5,
+    "poster" : "m5x8D0bZ3eKqIVWZ5y7TnZ2oTVg.jpg",
+    "overview" : "After the unexpected death of the Pope, Cardinal Lawrence is tasked with managing the covert and ancient ritual of electing a new one. Sequestered in the Vatican with the Catholic Church’s most powerful leaders until the process is complete, Lawrence finds himself at the center of a conspiracy that could lead to its downfall.",
+    "genres" : "Drama,Thriller"
   },
   {
     "id" : 10,
-    "title" : "Heretic",
+    "title" : "Flow",
     "runtime" : "2h 10min",
     "releaseYear" : "2024",
-    "rating" : 4.5,
-    "poster" : "5HJqjCTcaE1TFwnNh3Dn21be2es.jpg",
-    "overview" : "Two young missionaries are forced to prove their faith when they knock on the wrong door and are greeted by a diabolical Mr. Reed, becoming ensnared in his deadly game of cat-and-mouse.",
-    "genres" : "Horror,Thriller"
+    "rating" : 3.5,
+    "poster" : "dzDMewC0Hwv01SROiWgKOi4iOc1.jpg",
+    "overview" : "A solitary cat, displaced by a great flood, finds refuge on a boat with various species and must navigate the challenges of adapting to a transformed world together.",
+    "genres" : "Animation,Adventure,Fantasy"
   }
 ]
